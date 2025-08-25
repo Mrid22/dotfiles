@@ -8,10 +8,10 @@
 
 # Example: add = "sudo apt install #:?"
 
-add = "" # Example: sudo apt install #:?
-remove = "" # Example: sudo apt remove #:?
-sync = "" # Example: sudo apt update
-upgrade = "" # Example: sudo apt upgrade
+add = "paru #:?" # Example: sudo apt install #:?
+remove = "paru -Rnsu #:?" # Example: sudo apt remove #:?
+sync = "paru -Sy" # Example: sudo apt update
+upgrade = "paru" # Example: sudo apt upgrade
 
 plural_name = "system packages"
 
