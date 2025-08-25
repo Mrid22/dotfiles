@@ -7,3 +7,4 @@ if status is-interactive
 
 export EDITOR=nvim
 end
+source '/home/mridula/.cache/oh-my-posh/init.26.19.1.default.1072.fish'
