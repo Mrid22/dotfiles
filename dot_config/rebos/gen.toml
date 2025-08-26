@@ -1,0 +1,34 @@
+# --------------------- #
+#    Generation File    #
+# --------------------- #
+
+
+# Packages to be installed via the native package manager.
+[managers.system]
+items = [
+     "hyprland",
+     "kitty",
+     "chezmoi",
+     "gauntlet-bin",
+     "neovim",
+     "zen-browser-bin",
+     "atuin",
+     "zoxide",
+     "blueman",
+     "swaync",
+     "docker",
+     "docker-compose",
+     "swww",
+]
+
+# Packages to be installed via Flatpak.
+[managers.flatpak]
+items = [
+    # "com.github.tchx84.Flatseal",
+]
+
+# Packages to be installed via Cargo.
+[managers.cargo]
+items = [
+    # "bacon",
+]
