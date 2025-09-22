@@ -38,7 +38,7 @@ items = [
     "proton-vpn-gtk-app",
     "aylurs-gtk-shell-git",
     "otf-firamono-nerd",
-    "gnome-disks",
+    "gnome-disk-utility",
     "ntfs-3g",
 ]
 
