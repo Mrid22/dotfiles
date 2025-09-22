@@ -37,6 +37,7 @@ items = [
     "wireguard-tools",
     "proton-vpn-gtk-app",
     "aylurs-gtk-shell-git",
+    "otf-firamono-nerd",
 ]
 
 # Packages to be installed via Flatpak.
