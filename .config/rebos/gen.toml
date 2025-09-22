@@ -38,6 +38,8 @@ items = [
     "proton-vpn-gtk-app",
     "aylurs-gtk-shell-git",
     "otf-firamono-nerd",
+    "gnome-disks",
+    "ntfs-3g",
 ]
 
 # Packages to be installed via Flatpak.
