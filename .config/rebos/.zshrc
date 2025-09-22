@@ -1,0 +1,1 @@
+export POSH_SESSION_ID="aa31c12d-e0f7-4d41-852d-357aa566df5a";source $'/home/mridula/.cache/oh-my-posh/init.14695981039346656037.zsh'
