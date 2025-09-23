@@ -42,6 +42,9 @@ items = [
     "ntfs-3g",
 ]
 
+
+[managers.services]
+items = ["docker"]
 # Packages to be installed via Flatpak.
 [managers.flatpak]
 items = [
