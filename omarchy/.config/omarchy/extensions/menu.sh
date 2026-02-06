@@ -18,3 +18,26 @@
 # show_about() {
 #   exec omarchy-launch-or-focus-tui "zsh -c 'fastfetch; read -k 1'"
 # }
+#
+show_main_menu() {
+  go_to_menu "$(menu "Go" "󰀻  Apps\n󱓞  Trigger\n  Style\n  Setup\n󰉉  Install\n󰭌  Remove\n  Update\n  About\n  System")"
+}
+
+go_to_menu() {
+  case "${1,,}" in
+  *apps*) walker -p "Launch…" ;;
+  *trigger*) show_trigger_menu ;;
+  *share*) show_share_menu ;;
+  *style*) show_style_menu ;;
+  *theme*) show_theme_menu ;;
+  *screenshot*) show_screenshot_menu ;;
+  *screenrecord*) show_screenrecord_menu ;;
+  *setup*) show_setup_menu ;;
+  *power*) show_setup_power_menu ;;
+  *install*) show_install_menu ;;
+  *remove*) show_remove_menu ;;
+  *update*) show_update_menu ;;
+  *about*) omarchy-launch-about ;;
+  *system*) show_system_menu ;;
+  esac
+}
