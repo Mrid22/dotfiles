@@ -1,12 +1,3 @@
-# See https://git-scm.com/docs/git-config
-
-[alias]
-	co = checkout
-	br = branch
-	ci = commit
-  st = status
-  aa = add all
-  cam = commit -a -m
 [init]
 	defaultBranch = main
 [pull]

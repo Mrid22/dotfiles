@@ -32,6 +32,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
+zinit load Grafcube/zinit-git
 
 # Completions
 autoload -U compinit && compinit
