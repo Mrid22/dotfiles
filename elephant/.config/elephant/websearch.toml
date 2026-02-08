@@ -1,4 +1,4 @@
 [[entries]]
 default = true
-name = "Google"
+name = "Duckduckgo"
 url = "https://www.duckduckgo.com/search?q=%TERM%"

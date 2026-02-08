@@ -40,7 +40,3 @@ provider = "calc"
 [[providers.prefixes]]
 prefix = "@"
 provider = "websearch"
-
-[[providers.prefixes]]
-prefix = "$"
-provider = "clipboard"
