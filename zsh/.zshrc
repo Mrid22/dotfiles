@@ -36,3 +36,5 @@ zinit load Grafcube/zinit-git
 
 # Completions
 autoload -U compinit && compinit
+
+eval "$(try init)"
