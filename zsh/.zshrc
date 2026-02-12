@@ -38,3 +38,5 @@ zinit load Grafcube/zinit-git
 autoload -U compinit && compinit
 
 eval "$(try init)"
+
+. "$HOME/.local/share/../bin/env"
