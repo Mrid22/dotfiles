@@ -41,3 +41,25 @@ go_to_menu() {
   *system*) show_system_menu ;;
   esac
 }
+
+
+show_setup_menu() {
+  local options="  Audio\n  Wifi\n󰂯  Bluetooth\n󱐋  Power Profile\n  System Sleep\n󰍹  Monitors"
+  [ -f ~/.config/hypr/bindings.conf ] && options="$options\n  Keybindings"
+  [ -f ~/.config/hypr/input.conf ] && options="$options\n  Input"
+  options="$options\n󰱔  DNS\n  Security"
+
+  case $(menu "Setup" "$options") in
+  *Audio*) omarchy-launch-audio ;;
+  *Wifi*) omarchy-launch-wifi ;;
+  *Bluetooth*) omarchy-launch-bluetooth ;;
+  *Power*) show_setup_power_menu ;;
+  *System*) show_setup_system_menu ;;
+  *Monitors*) open_in_editor ~/.config/hypr/monitors.conf ;;
+  *Keybindings*) open_in_editor ~/.config/hypr/bindings.conf ;;
+  *Input*) open_in_editor ~/.config/hypr/input.conf ;;
+  *DNS*) present_terminal omarchy-setup-dns ;;
+  *Security*) show_setup_security_menu ;;
+  *) show_main_menu ;;
+  esac
+}
