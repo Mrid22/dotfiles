@@ -40,3 +40,6 @@ autoload -U compinit && compinit
 eval "$(try init)"
 
 . "$HOME/.local/share/../bin/env"
+
+alias -- npm=pnpm
+alias -- npx=pnpx
