@@ -9,42 +9,43 @@ vim.g.mapleader = " "
 
 -- Shortcuts
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>")
 
 -- Plugins
 local gh = function(x) return "https://github.com/" .. x end
 
 vim.pack.add({
 	{
-		src = gh("nvim-treesitter/nvim-treesitter"),
+		src = gh("nvim-treesitter/nvim-treesitter")
 	},
 	{
-		src = gh("kylechui/nvim-surround"),
+		src = gh("kylechui/nvim-surround")
 	},
 	{
-		src = gh("navarasu/onedark.nvim"),
+		src = gh("navarasu/onedark.nvim")
 	},
 	{
-		src = gh("windwp/nvim-autopairs"),
+		src = gh("windwp/nvim-autopairs")
 	},
 	{
-		src = gh("nvim-lualine/lualine.nvim"),
+		src = gh("nvim-lualine/lualine.nvim")
 	},
 	-- Lsp
 	{
-		src = gh("neovim/nvim-lspconfig"),
+		src = gh("neovim/nvim-lspconfig")
 	},
 	{
 		src = gh("mason-org/mason.nvim")
 	},
 	{
-		src = gh("mason-org/mason-lspconfig.nvim")
+		src = gh("mason-org/mason-lspconfig.nvim") -- Automatically vim.lsp.enables stuff installed by Mason
 	},
-	-- Telescope
+	-- Fzf
 	{
-		src = gh("nvim-telescope/telescope.nvim")
+		src = gh("ibhagwan/fzf-lua")
 	},
 	{
-		src = gh("nvim-lua/plenary.nvim")
+		src = gh("nvim-tree/nvim-web-devicons")
 	},
 	-- Git
 	{
@@ -56,6 +57,15 @@ vim.pack.add({
 	},
 	{
 		src = gh("hrsh7th/cmp-nvim-lsp")
+	},
+	{
+		src = gh("nvimtools/none-ls.nvim")
+	},
+	{
+		src = gh("nvimtools/none-ls-extras.nvim")
+	},
+	{
+		src = gh("nvim-lua/plenary.nvim")
 	}
 })
 
@@ -63,8 +73,28 @@ require("nvim-autopairs").setup()
 require("nvim-surround").setup()
 require("lualine").setup()
 require("mason").setup()
-require("mason-lspconfig").setup()
-require("telescope").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"lua_ls",
+		"basedpyright",
+		"stylua",
+		"bashls",
+		"ts_ls",
+	},
+})
+
+local null_ls = require("null-ls")
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.prettierd,
+        require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
+    },
+})
+
+-- Cmp setup
+
 local cmp = require("cmp")
 cmp.setup({
 	snippet = {
@@ -81,7 +111,7 @@ cmp.setup({
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping.abort(),
-		['<CR>'] = cmp.mapping.confirm({ select = true }),   -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
@@ -94,6 +124,7 @@ require('onedark').setup({
 	style = "darker",
 	transparent = "true",
 })
+
 
 require('onedark').load()
 
