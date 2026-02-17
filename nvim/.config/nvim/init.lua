@@ -10,6 +10,7 @@ vim.g.mapleader = " "
 -- Shortcuts
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>")
+vim.keymap.set("n", "<leader>fg", ":FzfLua grep_visual<CR>")
 vim.keymap.set("n", "<leader>e",  ":NvimTreeToggle<CR>")
 vim.keymap.set("n", "<leader>ca",  ":Lspsaga code_action<CR>")
 
