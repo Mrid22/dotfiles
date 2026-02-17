@@ -75,6 +75,9 @@ vim.pack.add({
 		src = gh("hrsh7th/cmp-nvim-lsp")
 	},
 	{
+		src = gh("rafamadriz/friendly-snippets")
+	},
+	{
 		src = gh("nvimtools/none-ls.nvim")
 	},
 	{
