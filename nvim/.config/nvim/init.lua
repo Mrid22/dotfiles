@@ -11,6 +11,7 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>")
 vim.keymap.set("n", "<leader>e",  ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>ca",  ":Lspsaga code_action<CR>")
 
 -- Plugins
 local gh = function(x) return "https://github.com/" .. x end
@@ -23,7 +24,7 @@ vim.pack.add({
 		src = gh("kylechui/nvim-surround")
 	},
 	{
-		src = gh("navarasu/onedark.nvim")
+		src = gh("folke/tokyonight.nvim")
 	},
 	-- Autopairs
 	{
@@ -44,6 +45,12 @@ vim.pack.add({
 	},
 	{
 		src = gh("mason-org/mason-lspconfig.nvim") -- Automatically vim.lsp.enables stuff installed by Mason
+	},
+	{
+		src = gh("nvimdev/lspsaga.nvim")
+	},
+	{
+		src = gh("MysticalDevil/inlay-hints.nvim")
 	},
 	-- Fzf
 	{
@@ -81,13 +88,13 @@ vim.pack.add({
 	}
 })
 
-require('nvim-treesitter').setup({
-	automatic_installation = true,
-})
+require('nvim-treesitter').setup({automatic_installation = true})
 require("nvim-surround").setup()
 require("lualine").setup()
 require("nvim-tree").setup ()
 require('nvim-ts-autotag').setup()
+require('lspsaga').setup()
+require('inlay-hints').setup()
 
 
 -- Autopairs
@@ -173,13 +180,12 @@ cmp.setup({
 	})
 })
 
-require('onedark').setup({
-	style = "darker",
+require('tokyonight').setup({
+	style = "storm",
 	transparent = "true",
 })
 
-
-require('onedark').load()
+vim.cmd[[colorscheme tokyonight]]
 
 -- Remove unused plugins
 
