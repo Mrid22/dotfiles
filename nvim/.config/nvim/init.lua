@@ -11,23 +11,28 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>")
 vim.keymap.set("n", "<leader>fg", ":FzfLua grep_visual<CR>")
-vim.keymap.set("n", "<leader>e",  ":NvimTreeToggle<CR>")
-vim.keymap.set("n", "<leader>ca",  ":Lspsaga code_action<CR>")
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>ca", ":Lspsaga code_action<CR>")
 
 -- Plugins
 local gh = function(x) return "https://github.com/" .. x end
 
 vim.pack.add({
+	-- Theme
+	{
+		src = gh("folke/tokyonight.nvim")
+	},
+	-- Terminal
+	{
+		src = gh("akinsho/toggleterm.nvim")
+	},
+	-- Autopairs
 	{
 		src = gh("nvim-treesitter/nvim-treesitter")
 	},
 	{
 		src = gh("kylechui/nvim-surround")
 	},
-	{
-		src = gh("folke/tokyonight.nvim")
-	},
-	-- Autopairs
 	{
 		src = gh("windwp/nvim-autopairs")
 	},
@@ -92,10 +97,19 @@ vim.pack.add({
 	}
 })
 
-require('nvim-treesitter').setup({automatic_installation = true})
+require('nvim-treesitter').setup(
+	{
+		automatic_installation = true,
+		highlight = {
+			enable = true,
+		},
+	}
+)
+
+require('toggleterm').setup()
 require("nvim-surround").setup()
 require("lualine").setup()
-require("nvim-tree").setup ()
+require("nvim-tree").setup()
 require('nvim-ts-autotag').setup()
 require('lspsaga').setup()
 require('inlay-hints').setup()
@@ -106,12 +120,11 @@ local npairs = require("nvim-autopairs")
 local Rule = require('nvim-autopairs.rule')
 
 npairs.setup({ -- Treesitter Integration
-    check_ts = true,
-    ts_config = {
-        lua = {'string'},-- it will not add a pair on that treesitter node
-        javascript = {'template_string'},
-        java = false,-- don't check treesitter on java
-    }
+	check_ts = true,
+	ts_config = {
+		lua = { 'string' }, -- it will not add a pair on that treesitter node
+		javascript = { 'template_string' },
+	}
 })
 
 local ts_conds = require('nvim-autopairs.ts-conds')
@@ -119,10 +132,10 @@ local ts_conds = require('nvim-autopairs.ts-conds')
 
 -- press % => %% only while inside a comment or string
 npairs.add_rules({
-  Rule("%", "%", "lua")
-    :with_pair(ts_conds.is_ts_node({'string','comment'})),
-  Rule("$", "$", "lua")
-    :with_pair(ts_conds.is_not_ts_node({'function'}))
+	Rule("%", "%", "lua")
+			:with_pair(ts_conds.is_ts_node({ 'string', 'comment' })),
+	Rule("$", "$", "lua")
+			:with_pair(ts_conds.is_not_ts_node({ 'function' }))
 })
 -- Mason
 
@@ -187,9 +200,13 @@ cmp.setup({
 require('tokyonight').setup({
 	style = "storm",
 	transparent = "true",
+	styles = {
+		sidebars = "transparent",
+		floats = "transparent",
+	},
 })
 
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd [[colorscheme tokyonight]]
 
 -- Remove unused plugins
 
