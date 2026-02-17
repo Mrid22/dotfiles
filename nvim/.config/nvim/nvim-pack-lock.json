@@ -28,6 +28,10 @@
       "rev": "ca22d81c34410bd3759bc95a8206d5d3c300e12a",
       "src": "https://github.com/nvimtools/none-ls-extras.nvim"
     },
+    "none-ls-shellcheck.nvim": {
+      "rev": "0f84461241e76e376a95fb7391deac82dc3efdbf",
+      "src": "https://github.com/gbprod/none-ls-shellcheck.nvim"
+    },
     "none-ls.nvim": {
       "rev": "f61f46ded0ca9edce7a09b674f8e162d10921426",
       "src": "https://github.com/nvimtools/none-ls.nvim"
@@ -48,9 +52,17 @@
       "rev": "1098d7b3c34adcfa7feb3289ee434529abd4afd1",
       "src": "https://github.com/kylechui/nvim-surround"
     },
+    "nvim-tree.lua": {
+      "rev": "fa3c45875f9b1f56ace57711c6f2ac22484ed956",
+      "src": "https://github.com/nvim-tree/nvim-tree.lua"
+    },
     "nvim-treesitter": {
       "rev": "4d9466677a5ceadef104eaa0fe08d60d91c4e9a7",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "nvim-ts-autotag": {
+      "rev": "8e1c0a389f20bf7f5b0dd0e00306c1247bda2595",
+      "src": "https://github.com/windwp/nvim-ts-autotag"
     },
     "nvim-web-devicons": {
       "rev": "746ffbb17975ebd6c40142362eee1b0249969c5c",

@@ -10,6 +10,7 @@ vim.g.mapleader = " "
 -- Shortcuts
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>")
+vim.keymap.set("n", "<leader>e",  ":NvimTreeToggle<CR>")
 
 -- Plugins
 local gh = function(x) return "https://github.com/" .. x end
@@ -24,8 +25,12 @@ vim.pack.add({
 	{
 		src = gh("navarasu/onedark.nvim")
 	},
+	-- Autopairs
 	{
 		src = gh("windwp/nvim-autopairs")
+	},
+	{
+		src = gh("windwp/nvim-ts-autotag")
 	},
 	{
 		src = gh("nvim-lualine/lualine.nvim")
@@ -44,8 +49,12 @@ vim.pack.add({
 	{
 		src = gh("ibhagwan/fzf-lua")
 	},
+	-- Nvimtree
 	{
-		src = gh("nvim-tree/nvim-web-devicons")
+		src = gh('nvim-tree/nvim-web-devicons')
+	},
+	{
+		src = 'https://github.com/nvim-tree/nvim-tree.lua'
 	},
 	-- Git
 	{
@@ -66,12 +75,20 @@ vim.pack.add({
 	},
 	{
 		src = gh("nvim-lua/plenary.nvim")
+	},
+	{
+		src = gh("gbprod/none-ls-shellcheck.nvim")
 	}
 })
 
-require("nvim-autopairs").setup()
 require("nvim-surround").setup()
 require("lualine").setup()
+require("nvim-tree").setup ()
+require("nvim-autopairs").setup ()
+
+
+-- Mason
+
 require("mason").setup()
 require("mason-lspconfig").setup({
 	ensure_installed = {
@@ -83,19 +100,29 @@ require("mason-lspconfig").setup({
 	},
 })
 
+-- Null ls
+
 local null_ls = require("null-ls")
 
 null_ls.setup({
-    sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.prettierd,
-        require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
-    },
+	sources = {
+		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.prettierd,
+		require("none-ls-shellcheck.diagnostics"),
+		require("none-ls-shellcheck.code_actions"),
+		require("none-ls.diagnostics.eslint"),
+	},
 })
+
 
 -- Cmp setup
 
+local cmp_autopairs = require('nvim-autopairs.completion.cmp') -- autopairs with completion for functions and such
 local cmp = require("cmp")
+cmp.event:on(
+	'confirm_done',
+	cmp_autopairs.on_confirm_done()
+)
 cmp.setup({
 	snippet = {
 		expand = function(args)
