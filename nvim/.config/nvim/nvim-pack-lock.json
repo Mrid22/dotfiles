@@ -20,6 +20,10 @@
       "rev": "11be32be3761c6263df2311afb6baa0de0863967",
       "src": "https://github.com/MysticalDevil/inlay-hints.nvim"
     },
+    "lspkind.nvim": {
+      "rev": "c7274c48137396526b59d86232eabcdc7fed8a32",
+      "src": "https://github.com/onsails/lspkind.nvim"
+    },
     "lspsaga.nvim": {
       "rev": "8efe00d6aed9db6449969f889170f1a7e43101a1",
       "src": "https://github.com/nvimdev/lspsaga.nvim"
