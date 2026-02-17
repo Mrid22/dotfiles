@@ -4,4 +4,4 @@ SCOPE=$(/usr/bin/ls | gum choose)
 DESCRIPTION=$(gum input)
 
 git add .
-git commit -a -m "$SCOPE($TYPE): $DESCRIPTION"
+git commit -a -m "$TYPE($SCOPE): $DESCRIPTION"
