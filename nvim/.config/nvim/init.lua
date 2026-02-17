@@ -81,10 +81,14 @@ vim.pack.add({
 	}
 })
 
+require('nvim-treesitter').setup({
+	automatic_installation = true,
+})
 require("nvim-surround").setup()
 require("lualine").setup()
 require("nvim-tree").setup ()
 require("nvim-autopairs").setup ()
+require('nvim-ts-autotag').setup()
 
 
 -- Mason
@@ -110,7 +114,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.prettierd,
 		require("none-ls-shellcheck.diagnostics"),
 		require("none-ls-shellcheck.code_actions"),
-		require("none-ls.diagnostics.eslint"),
+		require("none-ls.diagnostics.eslint_d"),
 	},
 })
 
