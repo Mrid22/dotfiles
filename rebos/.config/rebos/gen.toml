@@ -10,9 +10,9 @@ imports = [
 # Packages to be installed via the native package manager.
 [managers.system]
 items = [
+# Terminal
     "git",
 		"github-cli",
-		"hyprland",
 		"kitty",
 		"neovim-nightly",
 		"oh-my-posh-bin",
@@ -20,21 +20,24 @@ items = [
 		"zoxide",
 		"fzf",
 		"eza",
+		"yazi",
 		"zsh",
 	  "stow",
 		"nodejs",
 		"npm",
 		"git-delta",
 		"keyd",
-		"zen-browser-bin",
-		"vicinae-bin",
-		"yazi",
 		"man",
+# Gtk
 		"layan-gtk-theme",
 		"nwg-look",
+# Hypr*
+		"hyprland",
 		"hyprpaper",
 		"hypridle",
 		"hyprsunset",
+		"zen-browser-bin",
+		"vicinae-bin",
 ]
 
 # Packages to be installed via Flatpak.
