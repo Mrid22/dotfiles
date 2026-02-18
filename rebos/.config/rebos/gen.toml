@@ -38,6 +38,9 @@ items = [
 		"hyprsunset",
 		"zen-browser-bin",
 		"vicinae-bin",
+# Game-making
+    "godot",
+    "blender"
 ]
 
 # Packages to be installed via Flatpak.
