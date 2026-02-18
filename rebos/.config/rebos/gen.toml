@@ -40,7 +40,7 @@ items = [
 		"vicinae-bin",
 # Game-making
     "godot",
-    "blender"
+    "blender",
 
 		"zen-browser-bin",
 ]
