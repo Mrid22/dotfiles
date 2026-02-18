@@ -32,7 +32,7 @@ items = [
 		"layan-gtk-theme",
 		"nwg-look",
 # Fonts
-    "ttf-jetbrains-mono-nerd"
+    "ttf-jetbrains-mono-nerd",
 #Desktop*
 		"hyprland",
 		"hyprpaper",
