@@ -41,6 +41,7 @@ items = [
 		"hyprshot",
 		"waybar",
 		"vicinae-bin",
+		"swaync",
 # Hobbies
     "godot",
     "blender",
