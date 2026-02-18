@@ -32,7 +32,10 @@ items = [
 		"blueman",
 		"man",
 		"layan-gtk-theme",
-		"nwg-look"
+		"nwg-look",
+		"hyprpaper",
+		"hypridle",
+		"hyprsunset",
 ]
 
 # Packages to be installed via Flatpak.
