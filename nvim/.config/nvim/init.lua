@@ -19,130 +19,130 @@ vim.keymap.set("n", "<leader>rn", ":Lspsaga rename<CR>")
 vim.keymap.set("n", "<leader>K", ":Lspsaga hover_doc<CR>")
 
 -- Plugins
-local gh = function(x) return "https://github.com/" .. x end
+local gh = function(x)
+	return "https://github.com/" .. x
+end
 
 vim.pack.add({
 	-- Theme
 	{
-		src = gh("folke/tokyonight.nvim")
+		src = gh("folke/tokyonight.nvim"),
 	},
 	-- Terminal
 	{
-		src = gh("akinsho/toggleterm.nvim")
+		src = gh("akinsho/toggleterm.nvim"),
 	},
 	-- Autopairs
 	{
-		src = gh("nvim-treesitter/nvim-treesitter")
+		src = gh("nvim-treesitter/nvim-treesitter"),
 	},
 	{
-		src = gh("kylechui/nvim-surround")
+		src = gh("kylechui/nvim-surround"),
 	},
 	{
-		src = gh("windwp/nvim-autopairs")
+		src = gh("windwp/nvim-autopairs"),
 	},
 	{
-		src = gh("windwp/nvim-ts-autotag")
+		src = gh("windwp/nvim-ts-autotag"),
 	},
 	{
-		src = gh("nvim-lualine/lualine.nvim")
+		src = gh("nvim-lualine/lualine.nvim"),
 	},
 	-- Lsp
 	{
-		src = gh("neovim/nvim-lspconfig")
+		src = gh("neovim/nvim-lspconfig"),
 	},
 	{
-		src = gh("mason-org/mason.nvim")
+		src = gh("mason-org/mason.nvim"),
 	},
 	{
-		src = gh("mason-org/mason-lspconfig.nvim") -- Automatically vim.lsp.enables stuff installed by Mason
+		src = gh("mason-org/mason-lspconfig.nvim"), -- Automatically vim.lsp.enables stuff installed by Mason
 	},
 	{
-		src = gh("nvimdev/lspsaga.nvim")
+		src = gh("nvimdev/lspsaga.nvim"),
 	},
 	{
-		src = gh("MysticalDevil/inlay-hints.nvim")
+		src = gh("MysticalDevil/inlay-hints.nvim"),
 	},
 	{
-		src = gh("onsails/lspkind.nvim")
+		src = gh("onsails/lspkind.nvim"),
 	},
 	-- Fzf
 	{
-		src = gh("ibhagwan/fzf-lua")
+		src = gh("ibhagwan/fzf-lua"),
 	},
 	-- Nvimtree
 	{
-		src = gh('nvim-tree/nvim-web-devicons')
+		src = gh("nvim-tree/nvim-web-devicons"),
 	},
 	{
-		src = 'https://github.com/nvim-tree/nvim-tree.lua'
+		src = "https://github.com/nvim-tree/nvim-tree.lua",
 	},
 	-- Git
 	{
-		src = gh("lewis6991/gitsigns.nvim")
+		src = gh("lewis6991/gitsigns.nvim"),
 	},
 	-- Completions
 	{
-		src = gh("hrsh7th/nvim-cmp")
+		src = gh("hrsh7th/nvim-cmp"),
 	},
 	{
-		src = gh("hrsh7th/cmp-nvim-lsp")
+		src = gh("hrsh7th/cmp-nvim-lsp"),
 	},
 	{
-		src = gh("rafamadriz/friendly-snippets")
+		src = gh("L3MON4D3/LuaSnip"),
 	},
 	{
-		src = gh("nvimtools/none-ls.nvim")
+		src = gh("rafamadriz/friendly-snippets"),
 	},
 	{
-		src = gh("nvimtools/none-ls-extras.nvim")
+		src = gh("nvimtools/none-ls.nvim"),
 	},
 	{
-		src = gh("nvim-lua/plenary.nvim")
+		src = gh("nvimtools/none-ls-extras.nvim"),
 	},
 	{
-		src = gh("gbprod/none-ls-shellcheck.nvim")
-	}
+		src = gh("nvim-lua/plenary.nvim"),
+	},
+	{
+		src = gh("gbprod/none-ls-shellcheck.nvim"),
+	},
 })
 
-require('nvim-treesitter').setup(
-	{
-		automatic_installation = true,
-		highlight = {
-			enable = true,
-		},
-	}
-)
+require("nvim-treesitter").setup({
+	automatic_installation = true,
+	highlight = {
+		enable = true,
+	},
+})
 
-require('toggleterm').setup()
+require("toggleterm").setup()
 require("nvim-surround").setup()
 require("lualine").setup()
 require("nvim-tree").setup()
-require('nvim-ts-autotag').setup()
-require('lspsaga').setup()
-require('inlay-hints').setup()
-
+require("nvim-ts-autotag").setup()
+require("lspsaga").setup()
+require("inlay-hints").setup()
+require("luasnip.loaders.from_vscode").lazy_load()
 
 -- Autopairs
 local npairs = require("nvim-autopairs")
-local Rule = require('nvim-autopairs.rule')
+local Rule = require("nvim-autopairs.rule")
 
 npairs.setup({ -- Treesitter Integration
 	check_ts = true,
 	ts_config = {
-		lua = { 'string' }, -- it will not add a pair on that treesitter node
-		javascript = { 'template_string' },
-	}
+		lua = { "string" }, -- it will not add a pair on that treesitter node
+		javascript = { "template_string" },
+	},
 })
 
-local ts_conds = require('nvim-autopairs.ts-conds')
-
+local ts_conds = require("nvim-autopairs.ts-conds")
 
 -- press % => %% only while inside a comment or string
 npairs.add_rules({
-	Rule("%", "%", "lua")
-			:with_pair(ts_conds.is_ts_node({ 'string', 'comment' })),
-	Rule("$", "$", "lua")
-			:with_pair(ts_conds.is_not_ts_node({ 'function' }))
+	Rule("%", "%", "lua"):with_pair(ts_conds.is_ts_node({ "string", "comment" })),
+	Rule("$", "$", "lua"):with_pair(ts_conds.is_not_ts_node({ "function" })),
 })
 -- Mason
 
@@ -172,62 +172,58 @@ null_ls.setup({
 	},
 })
 
-
 -- Cmp setup
 
-local cmp_autopairs = require('nvim-autopairs.completion.cmp') -- autopairs with completion for functions and such
+local cmp_autopairs = require("nvim-autopairs.completion.cmp") -- autopairs with completion for functions and such
 local cmp = require("cmp")
-local lspkind = require('lspkind')
-cmp.event:on(
-	'confirm_done',
-	cmp_autopairs.on_confirm_done()
-)
+local lspkind = require("lspkind")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			vim.snippet.expand(args.body)
+			require('luasnip').lsp_expand(args.body)
 		end,
 	},
-	  formatting = {
-    fields = { 'abbr', 'icon', 'kind', 'menu' },
-    format = lspkind.cmp_format({
-      maxwidth = {
-        -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-        -- can also be a function to dynamically calculate max width such as
-        -- menu = function() return math.floor(0.45 * vim.o.columns) end,
-        menu = 50, -- leading text (labelDetails)
-        abbr = 50, -- actual suggestion item
-      },
-      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-      show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+	formatting = {
+		fields = { "abbr", "icon", "kind", "menu" },
+		format = lspkind.cmp_format({
+			maxwidth = {
+				-- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+				-- can also be a function to dynamically calculate max width such as
+				-- menu = function() return math.floor(0.45 * vim.o.columns) end,
+				menu = 50, -- leading text (labelDetails)
+				abbr = 50, -- actual suggestion item
+			},
+			ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+			show_labelDetails = true, -- show labelDetails in menu. Disabled by default
 
-      -- The function below will be called before any actual modifications from lspkind
-      -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-      before = function (entry, vim_item)
-        -- ...
-        return vim_item
-      end
-    })
-  },
+			-- The function below will be called before any actual modifications from lspkind
+			-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+			before = function(entry, vim_item)
+				-- ...
+				return vim_item
+			end,
+		}),
+	},
 	window = {
 		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
-		['<C-b>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<C-e>'] = cmp.mapping.abort(),
-		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
+		{ name = "nvim_lsp" },
 	}, {
-		{ name = 'buffer' },
-	})
+		{ name = "buffer" },
+	}),
 })
 
-require('tokyonight').setup({
+require("tokyonight").setup({
 	style = "storm",
 	transparent = "true",
 	styles = {
@@ -236,7 +232,7 @@ require('tokyonight').setup({
 	},
 })
 
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd([[colorscheme tokyonight]])
 
 -- Remove unused plugins
 
@@ -264,6 +260,5 @@ local function pack_clean()
 		vim.pack.del(unused_plugins)
 	end
 end
-
 
 vim.keymap.set("n", "<leader>pc", pack_clean)
