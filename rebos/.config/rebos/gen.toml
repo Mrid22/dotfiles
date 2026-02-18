@@ -11,7 +11,7 @@ imports = [
 [managers.system]
 items = [
     "git",
-		"gh",
+		"github-cli",
 		"hyprland",
 		"kitty",
 		"neovim-nightly",
@@ -28,7 +28,11 @@ items = [
 		"keyd",
 		"zen-browser-bin",
 		"vicinae-bin",
-		"yazi"
+		"yazi",
+		"blueman",
+		"man",
+		"layan-gtk-theme",
+		"nwg-look"
 ]
 
 # Packages to be installed via Flatpak.

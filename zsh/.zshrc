@@ -23,5 +23,8 @@ autoload -U compinit && compinit
 alias -- npm=pnpm
 alias -- npx=pnpx
 
+alias -- ls="eza --icons --git -lh"
+alias -- lsa="eza --icons --git -lah"
+
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(oh-my-posh init zsh)"
