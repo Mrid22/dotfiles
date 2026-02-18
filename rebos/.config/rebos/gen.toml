@@ -30,7 +30,6 @@ items = [
 		"man",
 # Gtk
 		"layan-gtk-theme",
-		"nwg-look",
 # Fonts
     "ttf-jetbrains-mono-nerd",
 #Desktop*
