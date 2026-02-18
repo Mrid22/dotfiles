@@ -16,5 +16,8 @@
       "dark": {
          "name": "tokyo-night"
       }
+   },
+   "launcher_window": {
+      "opacity": 0.75
    }
 }
