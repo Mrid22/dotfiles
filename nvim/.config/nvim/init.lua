@@ -154,6 +154,7 @@ require("mason-lspconfig").setup({
 		"stylua",
 		"bashls",
 		"ts_ls",
+		"hyprls",
 	},
 })
 
