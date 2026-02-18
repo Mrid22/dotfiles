@@ -31,16 +31,18 @@ items = [
 # Gtk
 		"layan-gtk-theme",
 		"nwg-look",
-# Hypr*
+#Desktop*
 		"hyprland",
 		"hyprpaper",
 		"hypridle",
 		"hyprsunset",
-		"zen-browser-bin",
+		"waybar"
 		"vicinae-bin",
 # Game-making
     "godot",
     "blender"
+
+		"zen-browser-bin",
 ]
 
 # Packages to be installed via Flatpak.
