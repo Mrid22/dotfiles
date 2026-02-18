@@ -36,12 +36,11 @@ items = [
 		"hyprpaper",
 		"hypridle",
 		"hyprsunset",
-		"waybar"
+		"waybar",
 		"vicinae-bin",
 # Game-making
     "godot",
     "blender",
-
 		"zen-browser-bin",
 ]
 
