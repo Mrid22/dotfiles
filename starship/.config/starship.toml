@@ -1052,7 +1052,7 @@ python_binary = [
 format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 version_format = "v${raw}"
 style = "yellow bold"
-symbol = "🐍 "
+symbol = " "
 disabled = false
 detect_extensions = [
     "py",
