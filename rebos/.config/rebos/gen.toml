@@ -32,6 +32,7 @@ items = [
 		"layan-gtk-theme",
 # Fonts
     "ttf-jetbrains-mono-nerd",
+		"noto-fonts-emoji",
 #Desktop*
 		"hyprland",
 		"hyprpaper",
