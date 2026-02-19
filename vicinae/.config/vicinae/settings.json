@@ -19,5 +19,8 @@
    },
    "launcher_window": {
       "opacity": 0.75
+   },
+   "keybinds": {
+      "toggle-action-panel": "control+K"
    }
 }
