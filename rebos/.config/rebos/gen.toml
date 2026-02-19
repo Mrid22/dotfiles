@@ -23,6 +23,7 @@ items = [
 		"yazi",
 		"zsh",
 	  "stow",
+		"mise",
 		"nodejs",
 		"npm",
 		"git-delta",
