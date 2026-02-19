@@ -3,6 +3,11 @@ bindkey -e
 setopt autocd
 
 
+# Env
+
+export EDITOR="/usr/bin/nvim"
+export VISUAL="/usr/bin/nvim"
+
 # Plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
