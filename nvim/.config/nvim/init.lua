@@ -28,6 +28,9 @@ vim.pack.add({
 	{
 		src = gh("folke/tokyonight.nvim"),
 	},
+	{
+		src =gh("goolord/alpha-nvim")
+	},
 	-- Terminal
 	{
 		src = gh("akinsho/toggleterm.nvim"),
@@ -124,6 +127,7 @@ require("nvim-ts-autotag").setup()
 require("lspsaga").setup()
 require("inlay-hints").setup()
 require("luasnip.loaders.from_vscode").lazy_load()
+require'alpha'.setup(require'alpha.themes.dashboard'.config)
 
 -- Autopairs
 local npairs = require("nvim-autopairs")
