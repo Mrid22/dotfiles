@@ -38,6 +38,15 @@ vim.pack.add({
 	{
 		src = gh("mason-org/mason-lspconfig.nvim") -- Auto enable LSP
 	},
+	{
+		src = gh('nvimdev/lspsaga.nvim')
+	},
+	{
+		src = gh("MysticalDevil/inlay-hints.nvim")
+	},
+	{
+		src = gh("onsails/lspkind.nvim")
+	},
 	-- Completions
 	{
 		src = gh('saghen/blink.cmp')
@@ -45,9 +54,17 @@ vim.pack.add({
 	{
 		src = gh('rafamadriz/friendly-snippets')
 	},
+	-- Git
+	{
+		src = gh("lewis6991/gitsigns.nvim")
+	},
 	-- Treesitter
 	{
 		src = gh('nvim-treesitter/nvim-treesitter')
+	},
+	-- Terminal
+	{
+		src = gh("akinsho/toggleterm.nvim")
 	}
 })
 
@@ -61,6 +78,10 @@ require('onedark').load()
 require('lualine').setup()
 require('fzf-lua').setup({ 'fzf-native' })
 require("nvim-tree").setup()
+require('lspsaga').setup()
+require("inlay-hints").setup()
+require("toggleterm").setup()
+require("gitsigns").setup()
 require("mason").setup()
 require("mason-lspconfig").setup {
 	ensure_installed = {
@@ -70,21 +91,37 @@ require("mason-lspconfig").setup {
 		"basedpyright"
 	}
 }
+
 require('blink.cmp').setup {
 	fuzzy = {
 		implementation = "lua"
 	},
+	completion = {
+		menu = {
+			draw = {
+				components = {
+					kind_icon = {
+						text = function (ctx)
+							return require("lspkind").symbol_map[ctx.kind] or ''
+						end
+					},
+				},
+			},
+		},
+	},
 	keymap = {
 		preset = 'default',
 
-		['<C-f>'] = {(
+		['<C-f>'] = { (
 			function(cmp) cmp.accept() end -- Set Control F to accept like zsh
-		)}
+		) }
 	}
 }
 
 -- Keymaps
 vim.keymap.set('n', '<leader>ff', FzfLua.files)
+vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>')
 vim.keymap.set('n', '<leader>fg', FzfLua.live_grep_native)
+vim.keymap.set('n', '<leader>la', FzfLua.lsp_code_actions)
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
