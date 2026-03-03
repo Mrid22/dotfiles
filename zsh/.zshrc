@@ -37,4 +37,3 @@ zstyle ':completion:*' menu no
 
 # History
 HISTDUP=erase
-
