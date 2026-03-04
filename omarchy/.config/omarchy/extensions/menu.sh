@@ -26,7 +26,7 @@ show_setup_menu() {
 
   case $(menu "Setup" "$options") in
   *Audio*) omarchy-launch-audio ;;
-  *Wifi*) omarchy-launch-wifi ;;
+  *Wifi*) omarchy-launch-or-focus-tui nmtui;;
   *Bluetooth*) omarchy-launch-bluetooth ;;
   *Power*) show_setup_power_menu ;;
   *System*) show_setup_system_menu ;;
