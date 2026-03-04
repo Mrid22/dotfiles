@@ -37,3 +37,7 @@ zstyle ':completion:*' menu no
 
 # History
 HISTDUP=erase
+
+. "$HOME/.local/share/../bin/env"
+
+alias -- uva="source .venv/bin/activate"
