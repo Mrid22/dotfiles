@@ -78,7 +78,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "omarchy-launch-or-focus-tui nmtui"
+    "on-click": "vicinae://extensions/dagimg-dot/wifi-commander/scan-wifi"
   },
   "battery": {
     "format": "{capacity}% {icon}",
