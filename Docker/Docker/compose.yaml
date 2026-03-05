@@ -120,6 +120,29 @@ services:
       - 8096:8096
 
 ###############################################
+# FLARESOLVERR - Media Server
+###############################################
+
+  flaresolverr:
+    <<: *common-keys
+    container_name: flaresolverr
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    ports:
+      - 8191:8191
+    environment:
+      - LOG_LEVEL=info
+
+###############################################
+# Cloudflared
+###############################################
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${CF_TOKEN}
+    restart: unless-stopped
+
+###############################################
 # ARR Stack Dedicated Network
 ###############################################
 
