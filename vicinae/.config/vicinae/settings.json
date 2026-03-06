@@ -26,6 +26,13 @@
       "toggle-action-panel": "control+K"
    },
    "providers": {
+      "@Gelei/store.vicinae.bluetooth": {
+         "entrypoints": {
+            "devices": {
+               "alias": "btd"
+            }
+         }
+      },
       "shortcuts": {
          "entrypoints": {
             "f469eff6-0621-45ca-a25f-3f97a2d1d728": {
