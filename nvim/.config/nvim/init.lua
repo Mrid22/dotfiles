@@ -49,10 +49,23 @@ vim.pack.add({
 	},
 	-- Completions
 	{
-		src = gh('saghen/blink.cmp')
+		src = gh("hrsh7th/nvim-cmp")
+	},
+	{
+		src = gh("hrsh7th/cmp-nvim-lsp")
+	},
+	{
+		src = gh('L3MON4D3/LuaSnip')
+	},
+	{
+		src = gh("saadparwaiz1/cmp_luasnip")
 	},
 	{
 		src = gh('rafamadriz/friendly-snippets')
+	},
+	-- Autopairs
+	{
+		src = gh('windwp/nvim-autopairs')
 	},
 	-- Git
 	{
@@ -83,6 +96,7 @@ require("inlay-hints").setup()
 require("toggleterm").setup()
 require("gitsigns").setup()
 require("mason").setup()
+require("nvim-autopairs").setup {}
 require("mason-lspconfig").setup {
 	ensure_installed = {
 		"lua_ls",
@@ -93,31 +107,70 @@ require("mason-lspconfig").setup {
 	}
 }
 
-require('blink.cmp').setup {
-	fuzzy = {
-		implementation = "lua"
-	},
-	completion = {
-		menu = {
-			draw = {
-				components = {
-					kind_icon = {
-						text = function (ctx)
-							return require("lspkind").symbol_map[ctx.kind] or ''
-						end
-					},
-				},
-			},
-		},
-	},
-	keymap = {
-		preset = 'default',
+  -- Set up nvim-cmp.
+  local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+  local cmp = require'cmp'
+	require("luasnip.loaders.from_vscode").lazy_load()
+	cmp.event:on(
+    'confirm_done',
+    cmp_autopairs.on_confirm_done()
+  )
 
-		['<C-f>'] = { (
-			function(cmp) cmp.accept() end -- Set Control F to accept like zsh
-		) }
-	}
-}
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body)
+      end,
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'luasnip' }, -- For luasnip users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    }),
+    matching = { disallow_symbol_nonprefix_matching = false }
+  })
+
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  vim.lsp.config('luals', {
+    capabilities = capabilities
+  })
+  vim.lsp.config('bashls', {
+    capabilities = capabilities
+  })
+  vim.lsp.config('eslint', {
+    capabilities = capabilities
+  })
+  vim.lsp.config('basedpyright', {
+    capabilities = capabilities
+  })
+  vim.lsp.config('jsonls', {
+    capabilities = capabilities
+  })
 
 -- Keymaps
 vim.keymap.set('n', '<leader>ff', FzfLua.files)

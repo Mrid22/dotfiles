@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "LuaSnip": {
+      "rev": "dae4f5aaa3574bd0c2b9dd20fb9542a02c10471c",
+      "src": "https://github.com/L3MON4D3/LuaSnip"
+    },
     "blink.cmp": {
       "rev": "28badce4a2e919d39a0e2a0b268ec74e68f28396",
       "src": "https://github.com/saghen/blink.cmp"
@@ -7,6 +11,14 @@
     "blink.pairs": {
       "rev": "52306a41ab60eddc78ccb078d8f3e72f4d65f075",
       "src": "https://github.com/saghen/blink.pairs"
+    },
+    "cmp-nvim-lsp": {
+      "rev": "cbc7b02bb99fae35cb42f514762b89b5126651ef",
+      "src": "https://github.com/hrsh7th/cmp-nvim-lsp"
+    },
+    "cmp_luasnip": {
+      "rev": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90",
+      "src": "https://github.com/saadparwaiz1/cmp_luasnip"
     },
     "friendly-snippets": {
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
@@ -43,6 +55,14 @@
     "mason.nvim": {
       "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
       "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "nvim-autopairs": {
+      "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
+      "src": "https://github.com/windwp/nvim-autopairs"
+    },
+    "nvim-cmp": {
+      "rev": "da88697d7f45d16852c6b2769dc52387d1ddc45f",
+      "src": "https://github.com/hrsh7th/nvim-cmp"
     },
     "nvim-lspconfig": {
       "rev": "ead0f5f342d8d323441e7d4b88f0fc436a81ad5f",
