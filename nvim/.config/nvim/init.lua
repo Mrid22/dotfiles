@@ -88,7 +88,8 @@ require("mason-lspconfig").setup {
 		"lua_ls",
 		"bashls",
 		"eslint",
-		"basedpyright"
+		"basedpyright",
+		"jsonls"
 	}
 }
 

@@ -10,19 +10,28 @@
 
 {
    "$schema": "https://vicinae.com/schemas/config.json",
-   "close_on_focus_loss": true,
+   "close_on_focus_loss": false,
    "theme": {
       "dark": {
          "name": "tokyo-night"
       }
    },
    "launcher_window": {
-      "opacity": 0.5,
+      "opacity": 0.75,
       "client_side_decorations": {
          "enabled": true
       }
    },
    "keybinds": {
       "toggle-action-panel": "control+K"
+   },
+   "providers": {
+      "shortcuts": {
+         "entrypoints": {
+            "f469eff6-0621-45ca-a25f-3f97a2d1d728": {
+               "alias": "ddg"
+            }
+         }
+      }
    }
 }
