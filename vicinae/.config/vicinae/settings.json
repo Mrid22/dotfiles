@@ -23,7 +23,7 @@
       }
    },
    "keybinds": {
-      "toggle-action-panel": "control+K"
+      "toggle-action-panel": "control+F"
    },
    "providers": {
       "@Gelei/store.vicinae.bluetooth": {

@@ -13,4 +13,4 @@ fi
 # Load shared shell configuration (bash fallback when zsh is unavailable)
 [[ -f /usr/share/omarchy-zsh/shell/all ]] && source /usr/share/omarchy-zsh/shell/all
 
-# Add your own exports, aliases, and functions below.
+zsh
