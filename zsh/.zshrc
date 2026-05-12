@@ -28,7 +28,7 @@ eval "$(zoxide init zsh --cmd cd)"
 
 # Aliases
 alias -- ls="eza -lh --icons --git"
-alias -- lsa="eza -lh --icons --git"
+alias -- lsa="eza -lah --icons --git"
 
 # Plugins
 
