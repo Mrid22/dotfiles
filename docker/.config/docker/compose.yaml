@@ -74,13 +74,13 @@ services:
       - /docker/appdata/prowlarr:/config
 
 ###############################################
-# QBITTORRENT - Downloader
+# TRANSMISSION - Downloader
 ###############################################
 
-  qbittorrent:
+  transmission:
     <<: *common-keys
     container_name: qbittorrent
-    image: ghcr.io/hotio/qbittorrent:latest
+    image: linuxserver/transmission:latest
     ports:
       - 8080:8080
       - 6881:6881
@@ -90,8 +90,23 @@ services:
       - TORRENTING_PORT=6881
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /docker/appdata/qbittorrent:/config
+      - /docker/appdata/transmission:/config
       - /data:/data
+
+###############################################
+# FLARESOLVERR - Cloudflare Proxy
+###############################################
+  flaresolverr:
+    <<: *common-keys
+    container_name: flaresolverr
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    environment:
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_HTML=${LOG_HTML:-false}
+      - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
+    ports:
+      - "${PORT:-8191}:8191"
+    restart: unless-stopped 
 
 ###############################################
 # JELLYFIN - Media Server
@@ -100,11 +115,11 @@ services:
   jellyfin:
     <<: *common-keys
     container_name: jellyfin
-    image: ghcr.io/hotio/jellyfin:latest
+    image: jellyfin/jellyfin:latest
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /docker/appdata/jellyfin:/config
-      - /data/media:/data/media:ro #read-only
+   #   - /etc/localtime:/etc/localtime:ro
+   #   - /docker/appdata/jellyfin/config:/config
+      - /data/media:/media:ro #read-only
     ports:
       - 8096:8096
 
