@@ -74,13 +74,13 @@ services:
       - /docker/appdata/prowlarr:/config
 
 ###############################################
-# TRANSMISSION - Downloader
+# QBITTORRENT - Downloader
 ###############################################
 
-  transmission:
+  qbittorrent:
     <<: *common-keys
     container_name: qbittorrent
-    image: linuxserver/transmission:latest
+    image: linuxserver/qbittorrent:latest
     ports:
       - 8080:8080
       - 6881:6881
