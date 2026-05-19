@@ -90,7 +90,7 @@ services:
       - TORRENTING_PORT=6881
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /docker/appdata/transmission:/config
+      - /docker/appdata/qbittorrent:/config
       - /data:/data
 
 ###############################################
@@ -112,13 +112,21 @@ services:
 # JELLYFIN - Media Server
 ###############################################
 
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate run --token ${CF_TOKEN}
+    environment:
+      - CF_TOKEN
+    restart: always
+    container_name: cloudflared 
+   
   jellyfin:
     <<: *common-keys
     container_name: jellyfin
     image: jellyfin/jellyfin:latest
     volumes:
    #   - /etc/localtime:/etc/localtime:ro
-   #   - /docker/appdata/jellyfin/config:/config
+      - /docker/appdata/jellyfin/config:/config
       - /data/media:/media:ro #read-only
     ports:
       - 8096:8096

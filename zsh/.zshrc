@@ -29,6 +29,7 @@ eval "$(zoxide init zsh --cmd cd)"
 # Aliases
 alias -- ls="eza -lh --icons --git"
 alias -- lsa="eza -lah --icons --git"
+alias -- gd="git diff"
 
 # Plugins
 
