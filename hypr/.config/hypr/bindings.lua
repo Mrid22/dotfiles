@@ -17,11 +17,12 @@
 
 -- Change an existing binding. o.rebind takes the same arguments as o.bind.
 -- This example replaces the default file manager with Flea.
--- o.rebind("SUPER + SHIFT + F", "File manager", { launch = "flea" })
+ o.rebind("SUPER + Q", "terminal", "omarchy launch terminal" )
+ o.rebind("SUPER + C", "close window", hl.dsp.window.close())
 
 -- Disable a default binding without replacing it.
--- hl.unbind("SUPER + SHIFT + B")
+ hl.unbind("SUPER + W")
 
 -- Logitech MX Keys examples:
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
--- o.bind("SUPER + PERIOD", nil, { panel = "omarchy.emojis" })
+o.bind("SUPER + PERIOD", nil, { panel = "omarchy.emojis" })
