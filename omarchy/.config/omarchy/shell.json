@@ -1,0 +1,117 @@
+{
+  "bar": {
+    "background": "glassy",
+    "layout": {
+      "center": [
+        {
+          "format": "ddd d MMM HH:mm",
+          "formatAlt": "d MMMM 'W'ww yyyy",
+          "id": "omarchy.clock",
+          "verticalFormat": "HH\n—\nmm"
+        }
+      ],
+      "centerBegin": [
+        {
+          "id": "omarchy.indicators"
+        }
+      ],
+      "centerEnd": [
+        {
+          "id": "omarchy.weather"
+        },
+        {
+          "id": "omarchy.elsewhen",
+          "cities": [
+            {
+              "name": "Nicosia",
+              "zone": "Asia/Nicosia"
+            },
+            {
+              "name": "Hong Kong",
+              "zone": "Asia/Hong_Kong"
+            },
+            {
+              "name": "Delhi",
+              "zone": "Asia/Kolkata"
+            },
+            {
+              "name": "Melbourne",
+              "zone": "Australia/Melbourne",
+              "lat": -37.814,
+              "lon": 144.96332,
+              "region": "Victoria, AU"
+            }
+          ]
+        },
+        {
+          "id": "omarchy.system-update"
+        }
+      ],
+      "left": [
+        {
+          "id": "omarchy.menu"
+        },
+        {
+          "id": "omarchy.workspaces"
+        }
+      ],
+      "right": [
+        {
+          "id": "omarchy.tray"
+        },
+        {
+          "id": "omarchy.keyboard-layout"
+        },
+        {
+          "id": "omarchy.agents"
+        },
+        {
+          "id": "omarchy.bluetooth"
+        },
+        {
+          "id": "omarchy.network"
+        },
+        {
+          "id": "omarchy.audio"
+        },
+        {
+          "id": "omarchy.monitor"
+        },
+        {
+          "id": "omarchy.power",
+          "showPercentage": true
+        }
+      ],
+      "tray": [
+        {
+          "id": "superwhisper.panel"
+        },
+        {
+          "id": "tharin.protonvpn"
+        },
+        {
+          "id": "io.github.avillagran.device-guide"
+        }
+      ]
+    },
+    "position": "top"
+  },
+  "dock": {
+    "pinned": [
+      "org.gnome.Nautilus",
+      "chromium",
+      "foot",
+      "omacalc",
+      "omawrite",
+      "X",
+      "YouTube"
+    ],
+    "position": "bottom"
+  },
+  "idle": {
+    "lock": 300,
+    "screensaver": 150
+  },
+  "plugins": [],
+  "version": 1
+}
